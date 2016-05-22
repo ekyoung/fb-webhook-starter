@@ -1,0 +1,19 @@
+test:
+  post:
+   - mkdir ./code-deploy/content
+   - cp ./fb-webhook-starter ./code-deploy/content/
+
+deployment:
+  production:
+    branch: master
+    codedeploy:
+      fb-webhook-starter:
+        application_root: /code-deploy
+        revision_location:
+          revision_type: S3
+          s3_location:
+            bucket: ethan-young-code-deploy
+            key_pattern: fb-webhook-starter/production/{SHORT_COMMIT}-{BUILD_NUM}
+        region: us-east-1
+        deployment_group: production
+        deployment_config: CodeDeployDefault.OneAtATime

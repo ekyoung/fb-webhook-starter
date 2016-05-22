@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bitbucket.org/ekyoung/movebot-fb/server"
+	"github.com/ekyoung/fb-webhook-starter/server"
 )
 
 func main() {

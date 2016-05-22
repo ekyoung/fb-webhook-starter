@@ -2,12 +2,13 @@ package server
 
 import (
 	"net/http"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
 
-type Server struct{}
+type Server struct {
+	FacebookWebhookVerifyToken string
+}
 
 func (s *Server) Run() {
 	r := gin.Default()
@@ -18,7 +19,7 @@ func (s *Server) Run() {
 			return
 		}
 
-		if c.Query("hub.verify_token") != os.ExpandEnv("$VERIFY_TOKEN") {
+		if c.Query("hub.verify_token") != s.FacebookWebhookVerifyToken {
 			c.String(http.StatusOK, "Verify token is incorrect.")
 			return
 		}

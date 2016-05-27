@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/ekyoung/fb-webhook-starter/configsrc"
+	"github.com/ekyoung/configsrc"
 
 	"github.com/ekyoung/fb-webhook-starter/server"
 )
